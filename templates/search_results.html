@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin: 20px 0;
+    }
+
+    .search-results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .search-result-item {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-result-item img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .search-result-item h2 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #2874f0;
+    }
+
+    .search-result-item .price {
+      font-size: 20px;
+      color: green;
+      margin: 5px 0;
+    }
+
+    .search-result-item button {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .search-results-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('cart') }}">Cart</a>
+        <a href="{{ url_for('checkout') }}">Checkout</a>
+        <a href="{{ url_for('client') }}">Client</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+        <a href="{{ url_for('payment') }}">Payment</a>
+        <a href="{{ url_for('product_detail') }}">Product-detail</a>
+        <a href="{{ url_for('product') }}">Product</a>
+        <a href="{{ url_for('search_results') }}">Search-results</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+        <a href="{{ url_for('view') }}">View</a>
+        
+    </div>
+  </div>
+
+  <!-- Search Results -->
+  <h1>Search Results</h1>
+  <div class="search-results-container">
+    <div class="search-result-item">
+      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Phone">
+      <h2>Product Name 1</h2>
+      <div class="price">₹1,499</div>
+      <button onclick="addToCart('Product Name 1')">Add to Cart</button>
+    </div>
+    
+    <div class="search-result-item">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+      <h2>Product Name 2</h2>
+      <div class="price">₹2,299</div>
+      <button onclick="addToCart('Product Name 2')">Add to Cart</button>
+    </div>
+
+    <div class="search-result-item">
+      <img src="{{ url_for('static', filename='images/smart-watch.png') }}" alt="Watch">
+      <h2>Product Name 3</h2>
+      <div class="price">₹999</div>
+      <button onclick="addToCart('Product Name 3')">Add to Cart</button>
+    </div>
+
+    <div class="search-result-item">
+      <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Watch">
+      <h2>Product Name 4</h2>
+      <div class="price">₹1,899</div>
+      <button onclick="addToCart('Product Name 4')">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    // Add to Cart Functionality
+    function addToCart(productName) {
+      alert(productName + " has been added to your cart!");
+    }
+  </script>
+
+</body>
+</html>

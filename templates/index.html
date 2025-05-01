@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .logo a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .search-box {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 2px;
+      border: none;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-items a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      width: 100%;
+      max-height: 300px;
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .categories, .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .category, .product {
+      background: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .category img, .product img {
+      width: 100%;
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    .category a, .product a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .product .title {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .product .price {
+      color: green;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-box {
+        margin: 10px 0;
+        width: 100%;
+      }
+
+      .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">My-store</a></div>
+    <div class="search-box">
+      <form action="search_results.html" method="get">
+        <input type="text" name="query" placeholder="Search for products, brands and more" />
+      </form>
+    </div>
+    <div class="nav-items">
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('cart') }}">Cart</a>
+        <a href="{{ url_for('checkout') }}">Checkout</a>
+        <a href="{{ url_for('client') }}">Client</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+        <a href="{{ url_for('payment') }}">Payment</a>
+        <a href="{{ url_for('product_detail') }}">Product-detail</a>
+        <a href="{{ url_for('product') }}">Product</a>
+        <a href="{{ url_for('search_results') }}">Search-results</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+        <a href="{{ url_for('view') }}">View</a>
+        
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <img src="{{ url_for('static', filename='images/image1.png') }}" class="active" alt="Offer 1" />
+    <img src="{{ url_for('static', filename='images/image2.png') }}" alt="Offer 2" />
+    <img src="{{ url_for('static', filename='images/image3.png') }}" alt="Offer 3" />
+  </div>
+  
+  </div>
+
+  <!-- Categories -->
+  <h2 style="padding: 10px 20px;">Shop by Category</h2>
+  <div class="categories">
+    <div class="category">
+      <a href="products.html">
+        <img src="{{ url_for('static', filename='images/mobiles.png') }}" alt="Mobiles" />
+        <p>Mobiles</p>
+      </a>
+    </div>
+    <div class="category">
+      <a href="products.html">
+        <img src="{{ url_for('static', filename='images/fashion.png') }}" alt="Fashion" />
+        <p>Fashion</p>
+      </a>
+    </div>
+    <div class="category">
+      <a href="products.html">
+        <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Electronics" />
+        <p>Electronics</p>
+      </a>
+    </div>
+    <div class="category">
+      <a href="products.html">
+        <img src="{{ url_for('static', filename='images/clothes.png') }}" alt="Clothes" />
+        <p>Clothes</p>
+      </a>
+    </div>
+  </div>
+  
+
+  <!-- Products -->
+  <h2 style="padding: 10px 20px;">Best Deals</h2>
+  <div class="products">
+    <div class="product">
+      <a href="product_detail.html">
+        <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Product 1"/>
+        <p class="title">Smartphone</p>
+        <p class="price">₹14,999</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product_detail.html">
+        <img src="{{ url_for('static', filename='images/smart-watch.png') }}" alt="Product 2"/>
+        <p class="title">Smartwatch</p>
+        <p class="price">₹2,499</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product_detail.html">
+        <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Product 3"/>
+        <p class="title">Shoes</p>
+        <p class="price">₹1,799</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product_detail.html">
+        <img src="{{ url_for('static', filename='images/speaker.png') }}" alt="Product 4"/>
+        <p class="title">Bluetooth Speaker</p>
+        <p class="price">₹999</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Flipkart Clone. Built for Educational Purposes.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Carousel Functionality
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel img');
+    setInterval(() => {
+      slides[slideIndex].classList.remove('active');
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }, 3000);
+
+    // Search box validation
+    document.querySelector('.search-box form').addEventListener('submit', function(e) {
+      const input = this.querySelector('input[name="query"]').value.trim();
+      if (!input) {
+        e.preventDefault();
+        alert("Please enter a search term.");
+      }
+    });
+
+    // Log product click
+    const productLinks = document.querySelectorAll('.product a');
+    productLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const productName = link.querySelector('.title').innerText;
+        console.log(`Product clicked: ${productName}`);
+      });
+    });
+  </script>
+
+</body>
+</html>

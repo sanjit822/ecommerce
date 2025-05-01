@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmation - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin-top: 30px;
+    }
+
+    .confirmation-box {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .confirmation-box h2 {
+      color: #333;
+    }
+
+    .confirmation-box p {
+      color: #555;
+      font-size: 16px;
+      margin: 10px 0 20px;
+    }
+
+    .confirmation-box .btn {
+      background-color: #2874f0;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    .images-preview {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .images-preview img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .images-preview {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Confirmation Content -->
+  <div class="confirmation-box">
+    <h1>🎉 Order Confirmed!</h1>
+    <h2>Thank you for your purchase.</h2>
+    <p>Your order has been successfully placed. You will receive a confirmation email with tracking information shortly.</p>
+    
+    <div class="images-preview">
+      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Phone">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+      <img src="{{ url_for('static', filename='images/smart-watch.png') }}" alt="Watch">
+      <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Watch">
+    </div>
+
+    <a class="btn" href="products.html">Continue Shopping</a>
+    <a class="btn" href="profile.html">Go to My Orders</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Terms</a> | 
+      <a href="#">Privacy</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    // JavaScript to handle the confirmation actions
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log("Order confirmation page loaded.");
+
+      // Example of tracking the order confirmation
+      // You can integrate this with an analytics or server request
+      trackOrderConfirmation();
+
+      // Function to simulate an order tracking event (could be linked to analytics)
+      function trackOrderConfirmation() {
+        console.log("Tracking order confirmation event...");
+        // Here you would call an API or analytics service to track the event
+      }
+    });
+
+    // Optional: Auto redirect user after 5 seconds to "Go to My Orders" page
+    setTimeout(function() {
+      window.location.href = 'profile.html';
+    }, 5000); // 5000 ms = 5 seconds
+  </script>
+
+</body>
+</html>

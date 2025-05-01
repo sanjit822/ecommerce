@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin: 20px 0;
+    }
+
+    .profile-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .profile-header h2 {
+      color: #2874f0;
+      margin: 0;
+    }
+
+    .profile-header p {
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .profile-details label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2874f0;
+    }
+
+    .profile-details input,
+    .profile-details select,
+    .profile-details textarea {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .save-btn {
+      background-color: #2874f0;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .save-btn:hover {
+      background-color: #1a5bb8;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .profile-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Profile Page -->
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <img src="{{ url_for('static', filename='images/clients1.png') }}" alt="Client 1">
+      <div>
+        <h2>John Doe</h2>
+        <p>Email: john.doe@example.com</p>
+        <p>Member since: January 2022</p>
+      </div>
+    </div>
+
+    <!-- Profile Details Form -->
+    <div class="profile-details">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" value="JohnDoe123" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="john.doe@example.com" />
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" value="+1234567890" />
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="4">123 Street, City, Country</textarea>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+        <option value="male" selected>Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <button class="save-btn" onclick="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function saveProfile() {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const gender = document.getElementById('gender').value;
+
+      // Save the profile information (for example, store in local storage or make an API call)
+      console.log('Profile saved:', {
+        username,
+        email,
+        phone,
+        address,
+        gender
+      });
+
+      // Confirmation message
+      alert('Profile updated successfully!');
+    }
+  </script>
+
+</body>
+</html>

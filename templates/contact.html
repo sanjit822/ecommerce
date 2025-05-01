@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin: 20px 0;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      padding: 20px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-details {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .contact-details h2 {
+      font-size: 26px;
+      color: #2874f0;
+    }
+
+    .contact-details p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .contact-details img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .contact-form {
+      flex: 2;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #0057d8;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-details {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Contact Us Section -->
+  <div class="contact-container">
+    <div class="contact-details">
+      <h2>Contact Us</h2>
+      <p>If you have any questions or concerns, feel free to get in touch with us. We are here to help you!</p>
+      <img src="{{ url_for('static', filename='images/teamwork.png') }}" alt="Client 3">
+    </div>
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        alert('Thank you for reaching out! We will get back to you shortly.');
+        document.getElementById('contactForm').reset(); // Reset form after submission
+      } else {
+        alert('Please fill in all fields before submitting.');
+      }
+    });
+  </script>
+
+</body>
+</html>

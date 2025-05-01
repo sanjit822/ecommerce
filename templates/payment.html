@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .payment-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .pay-btn {
+      width: 100%;
+      background-color: #2874f0;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .image-preview {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .image-preview img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Payment Form -->
+  <div class="payment-container">
+    <h1>Secure Payment</h1>
+
+    <form id="payment-form">
+      <div class="form-group">
+        <label for="card-name">Name on Card</label>
+        <input type="text" id="card-name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" maxlength="16" required />
+      </div>
+
+      <div class="form-group">
+        <label for="expiry">Expiry Date</label>
+        <input type="month" id="expiry" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="password" id="cvv" maxlength="4" required />
+      </div>
+
+      <div class="form-group">
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" required>
+          <option value="credit">Credit Card</option>
+          <option value="debit">Debit Card</option>
+          <option value="upi">UPI</option>
+          <option value="netbanking">Net Banking</option>
+        </select>
+      </div>
+
+      <button type="submit" class="pay-btn">Pay ₹1,499</button>
+    </form>
+
+    <div class="image-preview">
+      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Phone">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+      <img src="{{ url_for('static', filename='images/smart-watch.png') }}" alt="Watch">
+      <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Watch">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    // Form validation and payment simulation
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Grab the values
+      const cardName = document.getElementById('card-name').value;
+      const cardNumber = document.getElementById('card-number').value;
+      const expiry = document.getElementById('expiry').value;
+      const cvv = document.getElementById('cvv').value;
+      const paymentMethod = document.getElementById('payment-method').value;
+
+      // Simple validation check
+      if (!cardName || !cardNumber || !expiry || !cvv || !paymentMethod) {
+        alert('Please fill in all fields!');
+        return;
+      }
+
+      // Simulate payment processing
+      alert("Payment Successful! Redirecting to Order Confirmation...");
+      window.location.href = "order_confirmation.html"; // Redirect to order confirmation page
+    });
+  </script>
+</body>
+</html>

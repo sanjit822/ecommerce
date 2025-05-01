@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Detail - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .product-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .product-details {
+      flex-grow: 1;
+    }
+
+    h1 {
+      color: #2874f0;
+    }
+
+    .price {
+      font-size: 24px;
+      color: green;
+      margin-top: 10px;
+    }
+
+    .product-description {
+      margin-top: 20px;
+      color: #555;
+    }
+
+    .product-description h2 {
+      font-size: 18px;
+    }
+
+    .quantity {
+      margin-top: 20px;
+    }
+
+    .quantity input {
+      width: 50px;
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .add-to-cart-btn {
+      background-color: #2874f0;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <div class="product-container">
+    <div class="product-image">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+    </div>
+
+    <div class="product-details">
+      <h1>Product Name</h1>
+      <div class="price">₹1,499</div>
+
+      <div class="product-description">
+        <h2>Product Description</h2>
+        <p>This is a sample description of the product. It provides details about the features, benefits, and specifications of the item.</p>
+      </div>
+
+      <div class="quantity">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1" />
+      </div>
+
+      <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Image Previews -->
+  <div class="image-preview">
+    <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Phone">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+      <img src="{{ url_for('static', filename='images/smart-watch.png') }}" alt="Watch">
+      <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Watch">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    function addToCart() {
+      alert("Item added to cart!");
+    }
+
+    function changeImage(imageUrl) {
+      document.getElementById('main-image').src = imageUrl;
+    }
+  </script>
+
+</body>
+</html>

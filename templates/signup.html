@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin: 20px 0;
+    }
+
+    .signup-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #2874f0;
+      color: white;
+      cursor: pointer;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #0057d8;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .form-group .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    .form-group p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .form-group a {
+      color: #2874f0;
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .image-container img {
+      width: 48%;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .image-container {
+        flex-direction: column;
+      }
+
+      .image-container img {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Signup Form -->
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <form id="signupForm" action="signup_process.html" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required />
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-container">
+          <input type="checkbox" name="terms" required /> I agree to the <a href="#">Terms and Conditions</a>.
+        </label>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Sign Up" />
+      </div>
+
+      <div class="form-group">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </div>
+    </form>
+  </div>
+
+  <!-- Image Display Section -->
+  <div class="image-container">
+    <img src="{{ url_for('static', filename='images/clients1.png') }}" alt="Client 1">
+    <img src="{{ url_for('static', filename='images/e-services.png') }}" alt="Member 2" />
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function validateForm() {
+      // Get form values
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirm_password").value;
+
+      // Password validation
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false; // Prevent form submission
+      }
+
+      // Check for empty fields
+      var fields = document.querySelectorAll("input[type='text'], input[type='email'], input[type='password']");
+      for (var i = 0; i < fields.length; i++) {
+        if (fields[i].value.trim() === "") {
+          alert("Please fill all the fields.");
+          return false; // Prevent form submission
+        }
+      }
+
+      // If everything is valid, allow form submission
+      return true;
+    }
+  </script>
+
+</body>
+</html>

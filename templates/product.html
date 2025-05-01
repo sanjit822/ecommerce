@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin: 20px 0;
+    }
+
+    .product-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+    }
+
+    .product-details {
+      flex: 2;
+      padding-left: 30px;
+    }
+
+    .product-details h2 {
+      color: #2874f0;
+      margin-bottom: 10px;
+    }
+
+    .product-details p {
+      color: #555;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .product-details .price {
+      font-size: 24px;
+      color: #e60000;
+      margin-bottom: 20px;
+    }
+
+    .product-details .rating {
+      color: #ffbf00;
+      font-size: 18px;
+    }
+
+    .product-details button {
+      background-color: #2874f0;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .product-details button:hover {
+      background-color: #1a5bb8;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .product-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-details {
+        padding-left: 0;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Product Page -->
+  <div class="product-container">
+    <!-- Product Image -->
+    <div class="product-image">
+      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Phone">
+      <img src="{{ url_for('static', filename='images/shoes.png') }}" alt="Shoes">
+      <img src="{{ url_for('static', filename='images/electronic.png') }}" alt="Watch">
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+      <h2>Product Title</h2>
+      <p>Product description goes here. It includes all the important details about the product such as features, specifications, and benefits. Make it appealing for the users!</p>
+      <div class="price">₹4,999</div>
+      <div class="rating">
+        ★★★★☆ (1000 Reviews)
+      </div>
+      <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    // Simulate a cart
+    let cart = [];
+
+    // Function to handle adding items to the cart
+    function addToCart() {
+      const product = {
+        title: "Product Title",
+        price: 4999,
+        quantity: 1
+      };
+      
+      cart.push(product);
+      alert(`${product.title} added to the cart!`);
+      console.log(cart);
+    }
+
+    // Event listener for the "Add to Cart" button
+    const addToCartBtn = document.getElementById("add-to-cart-btn");
+    addToCartBtn.addEventListener("click", addToCart);
+  </script>
+
+</body>
+</html>

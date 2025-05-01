@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - Flipkart Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f3f6;
+    }
+
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2874f0;
+      margin: 20px 0;
+    }
+
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .service-item {
+      display: flex;
+      margin-bottom: 30px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+    }
+
+    .service-item img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 20px;
+    }
+
+    .service-item h3 {
+      color: #2874f0;
+      margin: 0;
+    }
+
+    .service-item p {
+      margin-top: 5px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #172337;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: lightblue;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .service-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .service-item img {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Flipkart</a></div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('cart') }}">Cart</a>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+<a href="{{ url_for('client') }}">Client</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('order_confirmation') }}">Order-confirmation</a>
+<a href="{{ url_for('payment') }}">Payment</a>
+<a href="{{ url_for('product_detail') }}">Product-detail</a>
+<a href="{{ url_for('product') }}">Product</a>
+<a href="{{ url_for('search_results') }}">Search-results</a>
+<a href="{{ url_for('profile') }}">Profile</a>
+<a href="{{ url_for('services') }}">Services</a>
+<a href="{{ url_for('signup') }}">Signup</a>
+<a href="{{ url_for('view') }}">View</a>
+
+    </div>
+  </div>
+
+  <!-- Services Page -->
+  <div class="services-container">
+    <div class="services-header">
+      <h1>Our Services</h1>
+      <p>Explore the variety of services we offer to enhance your shopping experience!</p>
+    </div>
+
+    <!-- Service Item 1 -->
+    <div class="service-item">
+      <img src="{{ url_for('static', filename='images/clients3.png') }}" alt="Client 3">
+      <div>
+        <h3>Free Shipping</h3>
+        <p>We offer free shipping on all orders, ensuring that you receive your items at your doorstep without any extra cost.</p>
+        <button class="service-btn" data-service="Free Shipping">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Service Item 2 -->
+    <div class="service-item">
+      <img src="{{ url_for('static', filename='images/clients1.png') }}" alt="Client 1">
+      <div>
+        <h3>Easy Returns</h3>
+        <p>If you're not satisfied with a product, return it easily within 30 days for a full refund or replacement.</p>
+        <button class="service-btn" data-service="Easy Returns">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Service Item 3 -->
+    <div class="service-item">
+      <img src="{{ url_for('static', filename='images/clients2.png') }}" alt="Client 2">
+      <div>
+        <h3>24/7 Customer Support</h3>
+        <p>Our support team is always available to help you with any issues or inquiries you may have.</p>
+        <button class="service-btn" data-service="24/7 Customer Support">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Service Item 4 -->
+    <div class="service-item">
+      <img src="{{ url_for('static', filename='images/clients4.png') }}" alt="Client 4">
+      <div>
+        <h3>Secure Payment</h3>
+        <p>We ensure all your transactions are safe and secure with industry-standard encryption.</p>
+        <button class="service-btn" data-service="Secure Payment">Learn More</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Flipkart Clone. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy</a> | 
+      <a href="#">Terms</a> | 
+      <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    // JavaScript for handling "Learn More" button click
+    document.querySelectorAll('.service-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const serviceName = this.getAttribute('data-service');
+        alert(`More information about: ${serviceName}`);
+      });
+    });
+  </script>
+
+</body>
+</html>
